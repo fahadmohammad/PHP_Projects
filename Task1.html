@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form</title>
+<script type="text/javascript">
+function validate(){
+	flag=true;
+	 
+	 if(document.mfm.fname.value.length==0) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg");
+		m.style.color="red";
+		m.innerHTML="Empty Field"; 
+		flag=false;
+	}
+	if(document.mfm.lname.value.length==0) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg1");
+		m.style.color="red";
+		m.innerHTML="Empty Field"; 
+		flag=false;
+	}
+	if(document.mfm.uid.value.length==0) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg2");
+		m.style.color="red";
+		m.innerHTML="Empty Field"; 
+		flag=false;
+	}
+	if(document.mfm.gender.value.length==0) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg3");
+		m.style.color="red";
+		m.innerHTML="Empty Field"; 
+		flag=false;
+	}
+	if(document.mfm.phone.value.length==0) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg4");
+		m.style.color="red";
+		m.innerHTML="Empty Field"; 
+		flag=false;
+	}
+	
+	/*
+	if(document.mfm.actype.value = "Select Type" ) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg6");
+		m.style.color="red";
+		m.innerHTML="* You must choose a type"; 
+		flag=false;
+	}
+	
+	if(document.mfm.branch.value = "Select Branch") 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg7");
+		m.style.color="red";
+		m.innerHTML="* You must choose a Branch"; 
+		flag=false;
+	}
+	*/
+	
+	if(document.mfm.ano.value == 0) 
+	{
+		//alert("you must type something");
+		//document.mfm.fname.style.color="red";
+		var m=document.getElementById("msg8");
+		m.style.color="red";
+		m.innerHTML="* Empty Account No"; 
+		flag=false;
+	}
+	
+	
+	
+	return flag;
+}
+function generateUID()
+{
+	 var max =20;
+	 var min =10;
+	 var min1 = 100;
+	 var max1 = 1000;
+	 
+	 var ramnum = Math.floor(Math.random()*(max1-min1)+min);
+	 
+	 var ramnum1 = Math.floor(Math.random()*(max - min)+min);
+	 document.getElementById("all1").value = ramnum1 + "-" +ramnum;
+	 //a.innerHTML = "hohi";
+	 //a.style.color="red";
+	
+	
+}
+function generateAcNo()
+{
+	
+	 var ramnum = Math.floor((Math.random()*200000000) + 100000000);
+	 document.getElementById("all2").value = ramnum;
+	 //a.innerHTML = "hohi";
+	 //a.style.color="red";
+	
+	
+}  
+function checkMail()
+{
+	 var str = document.mfm.email.value;
+	 var n = str.search("@");
+	 var m=document.getElementById("msg5");
+	 //var k = str.search("com");
+	 
+	 if(n < 0 )
+	 {
+		
+		m.style.color="red";
+		m.innerHTML="Invalid Email";
+	 }
+	
+	
+}
+function returnToPreviousPage() {
+    window.history.back();
+}
+function checkPassword()
+{
+	 var str = document.mfm.pass.value.length;
+	 var str1 = document.mfm.cpass.value.length;
+	 var m=document.getElementById("msg9");
+	 var n=document.getElementById("msg10");
+	 if(str == 0 || str < 8)
+	 {
+		m.style.color="red";
+		m.innerHTML="  *Invalid Password";
+		//returnToPreviousPage();
+		return false;
+		//alert("your password is too small");
+	 }
+	 else if( str != str1)
+	 {
+		n.style.color="red";
+		n.innerHTML="  * Password doesnot match";
+		return false;
+		
+		
+	 }
+	 else
+		return true;
+	 
+}
+
+</script>
+</head>
+<body background="images/registation.jpg" style="background-repeat:no-repeat; background-size:100%; font-family:sans-serif">
+
+<div>
+	<div>
+		<h1 style="background-color:#39e7e7; margin:0; color:#f1387b; text-align:center;">User Registration</h1>
+	</div>
+<form action="Test.php" method="Request" name = "mfm" >
+<table style="margin:0 auto; font-size:100%; color:#42e2f4; font-weight:bold;" >
+<tr><td align="right">First Name :</td><td><input type="text" id = "all"  name="fname" > </td>
+<td><span id ="msg" > </span></td></tr>
+
+
+
+<tr><td align="right">Last Name :</td><td><input type="text" id = "all" name="lname"> </td>
+<td><span id ="msg1"  ></span></td></tr>
+<tr><td align="right">User Id :</td><td><input type="text" id = "all1" name="uid"> </td>
+<td><span id ="msg2" > </span></td>
+ <td><input type="button" value="Generate User Id" onclick="generateUID()" /></td></tr>
+<tr><td align="right">DOB :</td>
+  <td><select id = "all" name="DOBMonth">
+	<option value="none">Select month</option>
+    <option value="january">January</option>
+    <option value="february">February</option>
+    <option value="march">March</option>
+    <option value="april">April</option>
+  </select>
+  </td>
+  <td><select id = "all" name="DOBDay">
+	<option value="none">Select Day</option>
+    <option value="one">1</option>
+    <option value="two">2</option>
+    <option value="three">3</option>
+    <option value="four">4</option>
+  </select>
+  </td>
+  <td><select id = "all" name="DOBYear">
+	<option value="none">Select Year</option>
+    <option value="1992">1992</option>
+    <option value="1993">1993</option>
+    <option value="1994">1994</option>
+    <option value="1995">1995</option>
+  </select>
+  </td>
+  <td><span id ="msg"  ></span></td>
+  </tr>
+<tr><td align="right">Gender :</td><td><input type="radio" name="gender" id = "all" value="male" > Male<br>
+<input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other"> Other </td>
+  <td><span id ="msg3"  ></span></td></tr>
+  
+<tr><td align="right">Phone :</td><td><input type="text"  id = "all" name="phone"> </td>
+<td><span id ="msg4" > </span></td></tr>
+
+<div> <tr><td align="right">Email :</td><td><input type="email" id = "all" name="email"> </td>
+<td><span id ="msg5" > </span></td></tr> </div>
+ 
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+
+<tr><td align="right">Account Type :</td>
+ <td><select id = "all" name="actype">
+	<option value="none">Select Type</option>
+    <option value="Savings Account">Savings Account</option>
+    <option value="Current Account">Current Account</option>
+  </select>
+  
+  </td>
+  <td><span id ="msg6"  > </span></td>
+  
+</tr>
+
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+
+<tr><td align="right">Your Branch :</td>  
+  <td><select id = "all" name="branch">
+	<option value="none">Select Branch</option>
+    <option value="Banani">Banani</option>
+    <option value="Gulshan">Gulshan</option>
+	<option value="Dhanmondi">Dhanmondi</option>
+	<option value="Motijheel">Motijheel</option>
+  </select>
+  
+  </td>
+  <td><span id ="msg7"  > </span></td>
+</tr>
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+<tr> </tr>
+  <tr><td align="right">Account No :</td><td><input type="text" id = "all2" name="ano"> </td>
+  <td><span id ="msg8"  > </span></td>
+  <td><input type="button" value="Generate Account No" onclick="generateAcNo()" /></td>
+  </tr>
+  
+  
+<tr><td align="right">Password :</td><td><input type="password" id = "all" name="pass"> </td>
+<td><span id ="msg9" > </span></td></tr>
+<tr><td align="right">Confirm Password :</td><td><input type="password" id = "all" name="cpass"> </td>
+<td><span id ="msg10" > </span></td></tr>
+</table>
+<input type="submit" onclick="  checkMail();  return validate() ; return checkPassword();" name="s" style="margin-left:560px; margin-top:20px;"/>
+</form>
+</div>
+</body>
+</html>

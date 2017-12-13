@@ -1,0 +1,88 @@
+<DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		function loadDoc() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			 document.getElementById("demo").innerHTML = this.responseText;
+			}
+		  };
+		  xhttp.open("GET", "Test2.php", true);
+		  xhttp.send();
+		}
+		
+		function updateDoc() {
+		  /*var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			 document.getElementById("demo1").innerHTML = this.responseText;
+			}
+		  };
+		  xhttp.open("GET", "Test3.php", true);
+		  xhttp.send();
+		  */
+		  
+		  window.location.href = "update.html";
+		}
+		function deleteDoc()
+		{
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			 //document.getElementById("demo1").innerHTML = this.responseText;
+			 alert("Deleted Successfully");
+			}
+		  };
+		  xhttp.open("GET", "Test4.php", true);
+		  xhttp.send();
+		}
+		
+		function exit()
+		{
+			window.location.href = "login.html";
+		}
+	</script>
+	
+</head>
+<body background="images/internetbanking.png"  style="background-repeat:no-repeat; background-size:100%; font-family:sans-serif;">
+
+<!-- <center> -->
+<div style="margin:0 auto; text-align:center;">
+	<div>
+		<h1 style="background-color:#39e7e7; margin:0; color:#f1387b;">Welcome to Internet Banking</h1>
+	</div>	
+	<div class="nav-bar"style="background-color:blue;padding:5px 0px;"  >
+		<ul style="list-style:none;margin:0">
+			
+			<button  type="button" onclick="deleteDoc()"><li style="float:left; width:15%"><a href="#" style="text-decoration: none;color: Red;">Delete</a></li></button>
+			<button  type="button" onclick="updateDoc()"><li style="float:left; width:15%"><a href="#" style="text-decoration: none;color: Red;">Update</a></li></button>
+			<button  type="button" onclick="loadDoc()"><li style="float:left; width:15%"><a href="#" style="text-decoration: none;color: Red;">My Account</a></li></button>
+			<li style="float:left;width:15%"><a href="#" style="text-decoration: none;color: white;">Shopping</a></li>
+			<button type="button" onclick = "exit()"><li style="float:left;width:15%"><a href="#" style="text-decoration: none;color: Red;">Logout</a></li>	</button>		
+		</ul>
+		<div style="clear:both">
+		
+		</div>	
+		
+	</div >
+	<div id = "demo">
+		
+	<div>
+	
+	<div id = "demo1">
+	
+	</div>
+	
+	
+	
+</div>	
+
+
+<!-- </center> -->
+</body>
+</html>
